@@ -22,12 +22,11 @@ Vector2f AABB::getMax() {
 Vector2f* AABB::getVertices() {
     Vector2f boxMin = this->getMin();
     Vector2f boxMax = this->getMax();
-    Vector2f vertices[] = {
-        Vector2f(boxMin.getX(), boxMin.getY()),
-        Vector2f(boxMin.getX(), boxMax.getY()),
-        Vector2f(boxMax.getX(), boxMin.getY()),
-        Vector2f(boxMax.getX(), boxMax.getY())
-    };
+    Vector2f* vertices = new Vector2f[4];
+    vertices[0] = Vector2f(boxMin.getX(), boxMin.getY());
+    vertices[1] = Vector2f(boxMin.getX(), boxMax.getY());
+    vertices[2] = Vector2f(boxMax.getX(), boxMin.getY());
+    vertices[3] = Vector2f(boxMax.getX(), boxMax.getY());
     return vertices;
 }
 

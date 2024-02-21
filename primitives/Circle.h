@@ -3,8 +3,9 @@
 
 #include "../rigidbody/Rigidbody2D.h"
 #include "../util/Vector2f.h"
+#include "Collider2D.h"
 
-class Circle {
+class Circle : public Collider2D {
 private:
     float radius;
     Rigidbody2D rigidbody;
@@ -14,7 +15,7 @@ public:
     Circle(float radius, const Rigidbody2D& rigidbody);
     Circle(const Circle& other);
     Circle& operator=(const Circle& other);
-    ~Circle();
+    virtual ~Circle() override;
 
     float getRadius() const;
     void setRadius(const float& radius);

@@ -7,14 +7,14 @@
 class ForceRegistration {
 private:
     ForceGenerator* fg;
-    Rigidbody2D rb;
+    Rigidbody2D* rb;
 
 public:
-    ForceRegistration(ForceGenerator* fg, Rigidbody2D rb);
+    ForceRegistration(ForceGenerator* fg, Rigidbody2D* rb);
     
     // Getters for fg and rb
     ForceGenerator* getForceGenerator() const;
-    Rigidbody2D getRigidbody() const;
+    Rigidbody2D* getRigidbody() const;
     
     // Define the equality comparison operator
     bool operator==(const ForceRegistration& other) const;

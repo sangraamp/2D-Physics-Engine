@@ -50,6 +50,11 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Vector2f& vec);
 
     bool operator==(const Vector2f& other) const; // Declaration of == operator
+
+    Vector2f& operator+=(const Vector2f& other);
+
+    // Zero method
+    void zero();
 private:
     float x;
     float y;

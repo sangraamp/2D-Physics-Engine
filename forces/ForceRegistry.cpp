@@ -5,11 +5,11 @@ ForceRegistry::ForceRegistry() {
     this->registry = std::vector<ForceRegistration>();
 }
 
-void ForceRegistry::add(Rigidbody2D rb, ForceGenerator* fg) {
+void ForceRegistry::add(Rigidbody2D* rb, ForceGenerator* fg) {
     registry.push_back(ForceRegistration(fg, rb));
 }
 
-void ForceRegistry::remove(Rigidbody2D rb, ForceGenerator* fg) {
+void ForceRegistry::remove(Rigidbody2D* rb, ForceGenerator* fg) {
     auto it = std::find(registry.begin(), registry.end(), ForceRegistration(fg, rb));
     if (it != registry.end()) {
         registry.erase(it);
@@ -22,7 +22,7 @@ void ForceRegistry::clear() {
 
 void ForceRegistry::updateForces(float dt) {
     for(ForceRegistration fr: registry) {
-        // fr.getForceGenerator()->updateForce(fr.getRigidbody(), dt);
+        fr.getForceGenerator()->updateForce(fr.getRigidbody(), dt);
     }
 }
 

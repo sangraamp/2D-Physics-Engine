@@ -5,7 +5,7 @@ CC = clang++
 CFLAGS = -std=c++14 -Wall
 
 # Source files directories
-SRC_DIRS = primitives rigidbody util entry
+SRC_DIRS = primitives rigidbody util entry physicssystem forces
 
 # Object files directory
 OBJ_DIR = obj

@@ -12,8 +12,8 @@ private:
 
 public:
     ForceRegistry();
-    void add(Rigidbody2D rb, ForceGenerator* fg);
-    void remove(Rigidbody2D rb, ForceGenerator* fg);
+    void add(Rigidbody2D* rb, ForceGenerator* fg);
+    void remove(Rigidbody2D* rb, ForceGenerator* fg);
     void clear();
     void updateForces(float dt);
     void zeroForces();

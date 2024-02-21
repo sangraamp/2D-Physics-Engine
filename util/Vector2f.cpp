@@ -76,3 +76,16 @@ std::ostream& operator<<(std::ostream& os, const Vector2f& vec) {
 bool Vector2f::operator==(const Vector2f& other) const {
     return (this->x == other.x) && (this->y == other.y);
 }
+
+// Addition assignment
+Vector2f& Vector2f::operator+=(const Vector2f& other) {
+    x += other.x;
+    y += other.y;
+    return *this;
+}
+
+// Zero method
+void Vector2f::zero() {
+    x = 0.0f;
+    y = 0.0f;
+}
