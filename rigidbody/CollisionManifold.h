@@ -21,11 +21,21 @@ public:
     // Normal getter
     const Vector2f& getNormal() const;
 
+    // Normal setter
+    void setNormal(const Vector2f& normal);
+
     // Contact points getter
     const std::vector<Vector2f>& getContactPoints() const;
 
     // Depth getter
     float getDepth() const;
 
-    bool isColliding() const;
+    // Depth setter
+    void setDepth(const float& depth);
+
+    // Getter for: are the bodies colliding?
+    bool getColliding() const;
+
+    // Setter for: are the bodies colliding?
+    void setColliding(const bool& colliding);
 };

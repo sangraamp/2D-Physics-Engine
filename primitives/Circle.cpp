@@ -4,7 +4,7 @@
 Circle::Circle() : radius(0), rigidbody() {}
 
 // Constructor with radius and Rigidbody2D
-Circle::Circle(float radius, const Rigidbody2D& rigidbody) : radius(radius), rigidbody(rigidbody) {}
+Circle::Circle(float radius, Rigidbody2D* rigidbody) : radius(radius), rigidbody(rigidbody) {}
 
 // Copy constructor
 Circle::Circle(const Circle& other) : radius(other.radius), rigidbody(other.rigidbody) {}
@@ -33,14 +33,14 @@ void Circle::setRadius(const float& radius) {
 
 // Getter for center (position of the Rigidbody2D)
 Vector2f Circle::getCenter() const {
-    return rigidbody.getPosition();
+    return rigidbody->getPosition();
 }
 
 // Setter for center
 void Circle::setCenter(const Vector2f& center) {
-    rigidbody.setTransform(center);
+    rigidbody->setTransform(center);
 }
 
-void Circle::setRigidbody(const Rigidbody2D& rb) {
+void Circle::setRigidbody(Rigidbody2D* rb) {
     this->rigidbody = rb;
 }

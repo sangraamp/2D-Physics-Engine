@@ -14,6 +14,14 @@ const Vector2f& CollisionManifold::getNormal() const {
     return normal;
 }
 
+// Normal setter
+void CollisionManifold::setNormal(const Vector2f& normal) {
+    if(normal.magnitudeSquared() != 1.0f) {
+        normal.normalize();
+    }
+    this->normal = normal;
+}
+
 void CollisionManifold::addContactPoint(const Vector2f& contactPoint) {
     this->contactPoints.push_back(contactPoint);
 }
@@ -28,6 +36,17 @@ float CollisionManifold::getDepth() const {
     return depth;
 }
 
-bool CollisionManifold::isColliding() const {
+// Depth setter
+void CollisionManifold::setDepth(const float& depth) {
+    this->depth = depth;
+}
+
+// Getter for: are the bodies colliding?
+bool CollisionManifold::getColliding() const {
     return this->colliding;
+}
+
+// Setter for: are the bodies colliding?
+void CollisionManifold::setColliding(const bool& colliding) {
+    this->colliding = colliding;
 }

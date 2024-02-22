@@ -8,7 +8,7 @@
 class Collisions {
 public:
     static CollisionManifold* findCollisionFeatures(Collider2D* c1, Collider2D* c2);
-    static CollisionManifold* findCollisionFeatures(Circle a, Circle b);
+    static CollisionManifold* findCollisionFeatures(Circle* a, Circle* b);
 };
 
 #endif // COLLISIONS_H

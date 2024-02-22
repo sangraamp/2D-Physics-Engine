@@ -2,10 +2,13 @@
 CC = clang++
 
 # Compiler flags
-CFLAGS = -std=c++14 -Wall
+CFLAGS = -std=c++14 -Wall -Wl,-rpath /usr/local/lib
+
+# SFML libraries
+LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
 # Source files directories
-SRC_DIRS = primitives rigidbody util entry physicssystem forces
+SRC_DIRS = primitives rigidbody util entry physicssystem forces components
 
 # Object files directory
 OBJ_DIR = obj
@@ -24,7 +27,7 @@ all: $(TARGET)
 
 # Rule to link object files and create the executable
 $(TARGET): $(OBJ_FILES)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@ $(LIBS)
 
 # Rule to compile source files into object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp

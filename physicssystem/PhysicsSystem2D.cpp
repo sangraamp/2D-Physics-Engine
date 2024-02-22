@@ -29,14 +29,13 @@ void PhysicsSystem2D::fixedUpdate() {
                 result = Collisions::findCollisionFeatures(c1, c2);
             }
 
-            if(result && result->isColliding()) {
+            if(result && result->getColliding()) {
                 this->bodies1.push_back(rb1);
                 this->bodies2.push_back(rb2);
                 this->collisions.push_back(result);
             }
         }
     }
-
 
     // Update forces
     forceRegistry.updateForces(this->fixedUpdateDt);
@@ -66,7 +65,7 @@ void PhysicsSystem2D::fixedUpdate() {
 void PhysicsSystem2D::_applyImpulse(Rigidbody2D* r1, Rigidbody2D* r2, CollisionManifold* cm) {
     // Solve for linear velocity
     float invMass1 = 1.0f / r1->getMass();
-    float invMass2 = 1.0f / r1->getMass();
+    float invMass2 = 1.0f / r2->getMass();
     float invMassSum = invMass1 + invMass2;
 
     // Return if we have two bodies with infinite mass
@@ -97,8 +96,10 @@ void PhysicsSystem2D::_applyImpulse(Rigidbody2D* r1, Rigidbody2D* r2, CollisionM
     }
 
     Vector2f impulse = relativeNormal * impulseMagnitude;
-    r1->setLinearVelocity(r1->getLinearVelocity() + impulse * invMass1);
-    r2->setLinearVelocity(r2->getLinearVelocity() - impulse * invMass2);
+    // This is only a physics engine. To integrate it with any rendering library, there is generally a transform to make sure the values are appropriately scaled so that everything looks normal on the screen. For the makeshift render functionality I have here, a multiplication by 0.001f seems to work fine, since there is no transforming capability here, for now.
+    r1->setLinearVelocity((r1->getLinearVelocity() - impulse * invMass1) * 0.001f);
+    r2->setLinearVelocity((r2->getLinearVelocity() + impulse * invMass2) * 0.001f);
+    std::cout << "Impulse: " << impulse << ", r2's linear velocity: " << r2->getLinearVelocity() << '\n';
 }
 
 // Update function

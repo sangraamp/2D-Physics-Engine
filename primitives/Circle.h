@@ -8,11 +8,11 @@
 class Circle : public Collider2D {
 private:
     float radius;
-    Rigidbody2D rigidbody;
+    Rigidbody2D* rigidbody;
 
 public:
     Circle();
-    Circle(float radius, const Rigidbody2D& rigidbody);
+    Circle(float radius, Rigidbody2D* rigidbody);
     Circle(const Circle& other);
     Circle& operator=(const Circle& other);
     virtual ~Circle() override;
@@ -21,7 +21,7 @@ public:
     void setRadius(const float& radius);
     Vector2f getCenter() const;
     void setCenter(const Vector2f& center);
-    void setRigidbody(const Rigidbody2D& rb);
+    void setRigidbody(Rigidbody2D* rb);
 };
 
 #endif // CIRCLE_H
